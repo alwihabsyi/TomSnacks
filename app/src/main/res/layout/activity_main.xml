@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@null"
         android:scaleType="fitXY"
-        android:src="@drawable/iv_background" />
+        android:src="@drawable/iv_furnitur" />
 
     <ImageView
         android:id="@+id/btn_person"
