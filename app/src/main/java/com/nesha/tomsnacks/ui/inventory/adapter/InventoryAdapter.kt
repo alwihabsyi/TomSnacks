@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.nesha.tomsnacks.databinding.ItemInventoryBinding
-import com.nesha.tomsnacks.model.Inventory
+import com.nesha.tomsnacks.data.model.Inventory
 import com.nesha.tomsnacks.utils.currencyFormat
 
 class InventoryAdapter: RecyclerView.Adapter<InventoryAdapter.InventoryViewHolder>() {

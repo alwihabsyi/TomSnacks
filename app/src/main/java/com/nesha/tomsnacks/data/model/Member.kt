@@ -1,4 +1,4 @@
-package com.nesha.tomsnacks.model
+package com.nesha.tomsnacks.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

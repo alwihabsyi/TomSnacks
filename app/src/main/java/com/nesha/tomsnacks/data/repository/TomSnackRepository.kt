@@ -1,14 +1,16 @@
 package com.nesha.tomsnacks.data.repository
 
 import com.nesha.tomsnacks.data.local.TomSnackDao
-import com.nesha.tomsnacks.model.Inventory
-import com.nesha.tomsnacks.model.Member
-import com.nesha.tomsnacks.model.SalesReport
+import com.nesha.tomsnacks.data.model.Inventory
+import com.nesha.tomsnacks.data.model.Member
+import com.nesha.tomsnacks.data.model.SalesReport
 import com.nesha.tomsnacks.utils.UiState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOf
 
 class TomSnackRepository(
     private val tomSnackDao: TomSnackDao
@@ -70,5 +72,11 @@ class TomSnackRepository(
         }
 
         return salesReport.asStateFlow()
+    }
+
+    suspend fun getLastSales(): Flow<Int> {
+        val sales = tomSnackDao.getLastSaleId()
+        val nota = if (sales == null) 0 else sales.id + 1
+        return flowOf(nota)
     }
 }

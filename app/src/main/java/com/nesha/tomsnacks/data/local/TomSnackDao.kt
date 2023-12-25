@@ -5,9 +5,9 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.nesha.tomsnacks.model.Inventory
-import com.nesha.tomsnacks.model.Member
-import com.nesha.tomsnacks.model.SalesReport
+import com.nesha.tomsnacks.data.model.Inventory
+import com.nesha.tomsnacks.data.model.Member
+import com.nesha.tomsnacks.data.model.SalesReport
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -43,4 +43,8 @@ interface TomSnackDao {
 
     @Insert(onConflict =  OnConflictStrategy.ABORT)
     fun insertSales(salesReport: SalesReport)
+
+    @Query("SELECT * FROM salesreport order by id desc limit 1")
+    suspend fun getLastSaleId(): SalesReport
+
 }

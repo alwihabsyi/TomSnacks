@@ -1,12 +1,13 @@
-package com.nesha.tomsnacks.model
+package com.nesha.tomsnacks.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class SalesReport(
+data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val date: String,
-    val total: Int
+    val name: String,
+    val email: String,
+    val password: String
 )
