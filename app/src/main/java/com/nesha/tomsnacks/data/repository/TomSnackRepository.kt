@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 
-class InventoryRepository(
+class TomSnackRepository(
     private val tomSnackDao: TomSnackDao
 ) {
     private val inventories = MutableStateFlow<UiState<List<Inventory>>>(UiState.Loading())
@@ -18,13 +18,8 @@ class InventoryRepository(
     private val loginState = MutableStateFlow<UiState<String>>(UiState.Loading())
     private val salesReport = MutableStateFlow<UiState<List<SalesReport>>>(UiState.Loading())
 
-    suspend fun getAllInventory(): Flow<UiState<List<Inventory>>> {
-        tomSnackDao.getAllInventory().catch {
-            inventories.value = UiState.Error(it.localizedMessage ?: "Terjadi kesalahan")
-        }.collect {
-            inventories.value = UiState.Success(it)
-        }
-        return inventories.asStateFlow()
+    fun getAllInventory(): Flow<List<Inventory>> {
+        return tomSnackDao.getAllInventory()
     }
 
     suspend fun insertInventory(inventory: Inventory) {

@@ -35,7 +35,7 @@ interface TomSnackDao {
 
     // User
     @Query("SELECT COUNT(id) FROM User WHERE name = :name AND password = :password")
-    suspend fun login(name: String, password: String): Flow<Int>
+    fun login(name: String, password: String): Flow<Int>
 
     // Sales Report
     @Query("SELECT * FROM SalesReport")

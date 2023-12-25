@@ -1,10 +1,14 @@
 package com.nesha.tomsnacks
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nesha.tomsnacks.databinding.ActivityMainBinding
+import com.nesha.tomsnacks.ui.inventory.InventoryActivity
 import com.nesha.tomsnacks.utils.toast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
@@ -30,7 +34,9 @@ class MainActivity : AppCompatActivity() {
                 toast("Ini meja")
             }
             ivRak.setOnClickListener {
-                toast("Ini rak")
+                startActivity(
+                    Intent(this@MainActivity, InventoryActivity::class.java)
+                )
             }
             ivKardus.setOnClickListener {
                 toast("Ini kardus")
