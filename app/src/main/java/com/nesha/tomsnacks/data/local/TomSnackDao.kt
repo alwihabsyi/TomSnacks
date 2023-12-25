@@ -39,7 +39,7 @@ interface TomSnackDao {
 
     // Sales Report
     @Query("SELECT * FROM SalesReport")
-    fun getAllSales(): Flow<SalesReport>
+    fun getAllSales(): Flow<List<SalesReport>>
 
     @Insert(onConflict =  OnConflictStrategy.ABORT)
     fun insertSales(salesReport: SalesReport)
