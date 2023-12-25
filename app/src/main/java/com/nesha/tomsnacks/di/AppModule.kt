@@ -24,7 +24,8 @@ object AppModule {
             context = application,
             klass = TomSnackDatabase::class.java,
             name = "tomsnack_db"
-        ).fallbackToDestructiveMigration().build()
+        ).createFromAsset("database/tomsnack_db.db")
+            .build()
     }
 
     @Provides

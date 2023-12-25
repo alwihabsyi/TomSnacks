@@ -7,7 +7,6 @@ import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nesha.tomsnacks.databinding.ActivityInventoryBinding
 import com.nesha.tomsnacks.ui.inventory.adapter.InventoryAdapter
-import com.nesha.tomsnacks.utils.UiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
