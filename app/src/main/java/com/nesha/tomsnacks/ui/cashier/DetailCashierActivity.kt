@@ -42,6 +42,10 @@ class DetailCashierActivity : AppCompatActivity() {
 
         setUpPage()
         observer()
+
+        binding.ivProfile.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setUpPage() {

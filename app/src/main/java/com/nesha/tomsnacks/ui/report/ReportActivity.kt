@@ -21,6 +21,10 @@ class ReportActivity : AppCompatActivity() {
         binding = ActivityReportBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+
         binding.rvReports.apply {
             adapter = reportAdapter
             layoutManager = LinearLayoutManager(this@ReportActivity)

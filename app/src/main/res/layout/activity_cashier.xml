@@ -90,14 +90,27 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_inventory"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_view_inventory"
-        tools:listitem="@layout/item_inventory" />
+        app:layout_constraintTop_toBottomOf="@id/search_view_inventory">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="130dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_inventory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_inventory" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_payment"

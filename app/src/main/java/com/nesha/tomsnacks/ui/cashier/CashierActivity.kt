@@ -53,6 +53,10 @@ class CashierActivity : AppCompatActivity() {
                 }
             )
         }
+
+        binding.ivProfile.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setSearchBar() {
