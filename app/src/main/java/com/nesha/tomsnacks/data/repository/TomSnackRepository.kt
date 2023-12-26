@@ -71,7 +71,7 @@ class TomSnackRepository(
 
     suspend fun getLastMemberId(): Flow<Int> {
         val member = tomSnackDao.getLastMemberId()
-        val id = if (member == null) 0 else member.id + 1
+        val id = if (member == null) 1 else member.id + 1
         return flowOf(id)
     }
 }

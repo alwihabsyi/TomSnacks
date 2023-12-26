@@ -66,19 +66,18 @@ class MainActivity : AppCompatActivity() {
                 )
             }
             ivDesk.setOnClickListener {
+            }
+            ivRak.setOnClickListener {
                 startActivity(
                     Intent(
                         this@MainActivity, ReportActivity::class.java
                     )
                 )
             }
-            ivRak.setOnClickListener {
+            ivKardus.setOnClickListener {
                 startActivity(
                     Intent(this@MainActivity, InventoryActivity::class.java)
                 )
-            }
-            ivKardus.setOnClickListener {
-                toast("Ini kardus")
             }
         }
     }
