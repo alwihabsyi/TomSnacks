@@ -9,14 +9,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOf
 
 class TomSnackRepository(
     private val tomSnackDao: TomSnackDao
 ) {
-    private val inventories = MutableStateFlow<UiState<List<Inventory>>>(UiState.Loading())
-    private val members = MutableStateFlow<UiState<List<Member>>>(UiState.Loading())
     private val loginState = MutableStateFlow<UiState<String>>(UiState.Loading())
     private val salesReport = MutableStateFlow<UiState<List<SalesReport>>>(UiState.Loading())
 
@@ -32,14 +29,8 @@ class TomSnackRepository(
         tomSnackDao.deleteInventory(inventory)
     }
 
-    suspend fun getAllMembers(): Flow<UiState<List<Member>>> {
-        tomSnackDao.getAllMember().catch {
-            members.value = UiState.Error(it.localizedMessage ?: "Terjadi Kesalahan")
-        }.collect {
-            members.value = UiState.Success(it)
-        }
-
-        return members
+    fun getAllMembers(): Flow<List<Member>> {
+        return tomSnackDao.getAllMember()
     }
 
     suspend fun insertMember(member: Member) {
@@ -78,5 +69,11 @@ class TomSnackRepository(
         val sales = tomSnackDao.getLastSaleId()
         val nota = if (sales == null) 0 else sales.id + 1
         return flowOf(nota)
+    }
+
+    suspend fun getLastMemberId(): Flow<Int> {
+        val member = tomSnackDao.getLastMemberId()
+        val id = if (member == null) 0 else member.id + 1
+        return flowOf(id)
     }
 }

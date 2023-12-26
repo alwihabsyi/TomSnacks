@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import com.nesha.tomsnacks.databinding.ActivityMainBinding
 import com.nesha.tomsnacks.ui.cashier.CashierActivity
 import com.nesha.tomsnacks.ui.inventory.InventoryActivity
+import com.nesha.tomsnacks.ui.members.MembersActivity
 import com.nesha.tomsnacks.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -57,7 +58,9 @@ class MainActivity : AppCompatActivity() {
                 )
             }
             btnPerson.setOnClickListener {
-                toast("Ini orang")
+                startActivity(
+                    Intent(this@MainActivity, MembersActivity::class.java)
+                )
             }
             ivDesk.setOnClickListener {
                 toast("Ini meja")

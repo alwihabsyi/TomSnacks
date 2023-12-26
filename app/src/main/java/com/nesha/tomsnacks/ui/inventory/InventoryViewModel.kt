@@ -25,9 +25,7 @@ class InventoryViewModel @Inject constructor(
 
     private fun getAllInventory() {
         viewModelScope.launch {
-            Log.d("TESINVENT", "MASUKKKK")
             repository.getAllInventory().collect {
-                Log.d("TESINVENT", it.toString())
                 _inventoryState.value = it
             }
         }

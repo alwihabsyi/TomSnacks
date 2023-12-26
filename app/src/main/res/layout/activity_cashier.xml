@@ -42,13 +42,25 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:id="@+id/spinner_member"
+        app:layout_constraintTop_toBottomOf="@id/tl_nota"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/tl_nota" />
+        android:layout_marginHorizontal="20dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/ac_members"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_weight="1"
+            android:text="Members"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.camera.view.PreviewView
         android:id="@+id/view_barcode"
@@ -57,20 +69,32 @@
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/spinner_member" />
 
-    <androidx.appcompat.widget.SearchView
+    <androidx.cardview.widget.CardView
         android:id="@+id/search_view_inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:hint="Cari Apa?"
-        android:searchIcon="@null"
-        app:layout_constraintTop_toBottomOf="@id/view_barcode" />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/view_barcode"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp">
+
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search Here"/>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_inventory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/search_view_inventory"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_inventory" />

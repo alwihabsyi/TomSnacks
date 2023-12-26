@@ -33,6 +33,9 @@ interface TomSnackDao {
     @Delete
     suspend fun deleteMember(member: Member)
 
+    @Query("SELECT * FROM member order by id desc limit 1")
+    suspend fun getLastMemberId(): Member
+
     // User
     @Query("SELECT COUNT(id) FROM User WHERE name = :name AND password = :password")
     fun login(name: String, password: String): Flow<Int>
