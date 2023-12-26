@@ -1,21 +1,37 @@
-package com.nesha.tomsnacks.ui.inventory.adapter
+package com.nesha.tomsnacks.ui.cashier.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.nesha.tomsnacks.databinding.ItemInventoryBinding
 import com.nesha.tomsnacks.data.model.Inventory
+import com.nesha.tomsnacks.databinding.ItemPaymentBinding
 import com.nesha.tomsnacks.utils.currencyFormat
 
-class InventoryAdapter: RecyclerView.Adapter<InventoryAdapter.InventoryViewHolder>() {
+class CashierAdapter: RecyclerView.Adapter<CashierAdapter.InventoryViewHolder>() {
 
-    inner class InventoryViewHolder(val binding: ItemInventoryBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class InventoryViewHolder(val binding: ItemPaymentBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(inventory: Inventory) {
             with(binding) {
                 tvNamaInventory.text = inventory.namaItem
                 tvHargaInventory.text = inventory.hargaJual!!.currencyFormat()
+                var quantity = 1
+                tvQuantity.text = quantity.toString()
+
+                btnIncreaseItem.setOnClickListener {
+                    if (quantity < inventory.stok!!) {
+                        quantity += 1
+                        tvQuantity.text = quantity.toString()
+                    }
+                }
+
+                btnDecreaseItem.setOnClickListener {
+                    if (quantity > 1) {
+                        quantity -= 1
+                        tvQuantity.text = quantity.toString()
+                    }
+                }
             }
         }
     }
@@ -34,7 +50,7 @@ class InventoryAdapter: RecyclerView.Adapter<InventoryAdapter.InventoryViewHolde
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InventoryViewHolder {
         return InventoryViewHolder(
-            ItemInventoryBinding.inflate(
+            ItemPaymentBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )

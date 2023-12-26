@@ -72,4 +72,7 @@ dependencies {
     implementation("androidx.camera:camera-camera2:$cameraxVersion")
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
     implementation("androidx.camera:camera-view:$cameraxVersion")
+
+    // Slide to Act
+    implementation("com.ncorti:slidetoact:0.11.0")
 }
