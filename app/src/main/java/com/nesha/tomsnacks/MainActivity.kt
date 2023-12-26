@@ -13,6 +13,7 @@ import com.nesha.tomsnacks.databinding.ActivityMainBinding
 import com.nesha.tomsnacks.ui.cashier.CashierActivity
 import com.nesha.tomsnacks.ui.inventory.InventoryActivity
 import com.nesha.tomsnacks.ui.members.MembersActivity
+import com.nesha.tomsnacks.ui.report.ReportActivity
 import com.nesha.tomsnacks.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -65,7 +66,11 @@ class MainActivity : AppCompatActivity() {
                 )
             }
             ivDesk.setOnClickListener {
-                toast("Ini meja")
+                startActivity(
+                    Intent(
+                        this@MainActivity, ReportActivity::class.java
+                    )
+                )
             }
             ivRak.setOnClickListener {
                 startActivity(

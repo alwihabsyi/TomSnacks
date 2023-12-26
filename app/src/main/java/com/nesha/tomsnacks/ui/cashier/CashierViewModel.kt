@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nesha.tomsnacks.data.model.Inventory
 import com.nesha.tomsnacks.data.model.Member
+import com.nesha.tomsnacks.data.model.SalesReport
 import com.nesha.tomsnacks.data.repository.TomSnackRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,6 +52,12 @@ class CashierViewModel @Inject constructor(
             tomSnackRepository.getAllInventory().collect {
                 _inventoryState.value = it
             }
+        }
+    }
+
+    fun reportSales(salesReport: SalesReport) {
+        viewModelScope.launch {
+            tomSnackRepository.insertSales(salesReport)
         }
     }
 }

@@ -37,6 +37,10 @@ class TomSnackRepository(
         tomSnackDao.insertMember(member)
     }
 
+    suspend fun insertSales(salesReport: SalesReport) {
+        tomSnackDao.insertSales(salesReport)
+    }
+
     suspend fun deleteMember(member: Member) {
         tomSnackDao.deleteMember(member)
     }
@@ -55,14 +59,8 @@ class TomSnackRepository(
         return loginState.asStateFlow()
     }
 
-    suspend fun getAllSales(): Flow<UiState<List<SalesReport>>> {
-        tomSnackDao.getAllSales().catch {
-            salesReport.value = UiState.Error(it.localizedMessage ?: "Terjadi Kesalahan")
-        }.collect {
-            salesReport.value = UiState.Success(it)
-        }
-
-        return salesReport.asStateFlow()
+    fun getAllSales(): Flow<List<SalesReport>> {
+        return tomSnackDao.getAllSales()
     }
 
     suspend fun getLastSales(): Flow<Int> {

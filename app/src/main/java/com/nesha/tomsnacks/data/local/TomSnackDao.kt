@@ -45,7 +45,7 @@ interface TomSnackDao {
     fun getAllSales(): Flow<List<SalesReport>>
 
     @Insert(onConflict =  OnConflictStrategy.ABORT)
-    fun insertSales(salesReport: SalesReport)
+    suspend fun insertSales(salesReport: SalesReport)
 
     @Query("SELECT * FROM salesreport order by id desc limit 1")
     suspend fun getLastSaleId(): SalesReport
